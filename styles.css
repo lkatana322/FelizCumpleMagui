@@ -1,0 +1,547 @@
+/* General Layout */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Necesario para asegurar que el contenedor principal ocupe toda la altura */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Fondo animado centrado */
+#background-container {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado verticalmente */
+    align-items: center;     /* Centrado horizontalmente */
+    background: radial-gradient(circle at center, #120031, #3a006a, #7200b6, #9f00ff, #ff6fe3);
+    background-size: 350% 350%;  /* Ajustamos el tamaño del fondo para concentrar más los colores */
+    animation: centerFocusedBackgroundAnimation 6s ease-in-out infinite;
+    overflow: hidden;
+    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+main {
+    flex: 1; /* Esto asegura que el contenido principal se expanda para llenar el espacio disponible */
+}
+
+/* Animación compleja con enfoque en el centro */
+@keyframes centerFocusedBackgroundAnimation {
+    0% { background-position: 50% 50%; }
+    25% { background-position: 30% 30%; }
+    50% { background-position: 70% 70%; }
+    75% { background-position: 50% 50%; }
+    100% { background-position: 50% 50%; }
+}
+
+/* Brillo concentrado en el centro */
+#background-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.05));
+    z-index: -1;
+    filter: blur(50px); /* Un blur mayor para concentrar el brillo en el centro */
+    animation: centerPulseLight 8s ease-in-out infinite;
+}
+
+/* Animación de brillo centrado */
+@keyframes centerPulseLight {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+
+/* Pantalla de bienvenida */
+#welcome-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+#card-container {
+    background-color: #2d2746;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+#birthday-cake-image {
+    width: 100%;
+    max-height: 350px;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: #ff66cc;
+}
+
+.card-message {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+#welcome-button {
+    background: linear-gradient(45deg, #ff66cc, #9400ff);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Título */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    position: relative;
+    overflow: visible;
+}
+
+.title-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Título con resplandor */
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.5), 0 0 30px rgba(145, 0, 255, 0.8); /* Sombra con glow */
+    position: relative;
+    animation: textGlow 5s infinite ease-in-out;
+}
+
+/* Animación de brillo suave para las decoraciones */
+@keyframes titleGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 105, 180, 0.8), 0 0 35px rgba(251, 207, 91, 1);
+    }
+}
+
+/* Animación de resplandor del texto */
+@keyframes textGlow {
+    0% {
+        text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(145, 0, 255, 0.8);
+    }
+    50% {
+        text-shadow: 2px 2px 20px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(145, 0, 255, 1);
+    }
+    100% {
+        text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 0, 255, 0.5), 0 0 20px rgba(145, 0, 255, 0.8);
+    }
+}
+
+
+/* Sección de fotos rotatorias */
+#photo-rotation-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    margin-top: -10px;
+}
+
+/* Tarjeta general con brillo y animación */
+#photo-card {
+    width: 380px; /* Tamaño ajustado para que el marco encaje */
+    height: 380px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: none;
+    animation: photoCardPulse 4s ease-in-out infinite;
+}
+
+/* Marco elegante */
+.photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Mantener el marco por debajo de las imágenes */
+}
+
+/* Imagen del marco decorativo */
+.frame-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Mantener el marco debajo de las imágenes */
+    pointer-events: none; /* No permitir interacciones con el marco */
+}
+
+/* Imagen de la persona ajustada dentro del marco */
+.rotating-image {
+    position: absolute;
+    top: 28%; /* Ajustamos el desplazamiento para que encaje en el marco */
+    left: 28%;
+    width: 44%; /* Ajustamos el tamaño para que quede dentro del marco */
+    height: 46%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 3; /* Aseguramos que la imagen esté al frente del marco */
+    animation: fadeRotateZoom 9s infinite ease-in-out;
+    transition: transform 1s ease, opacity 0.5s ease;
+    box-shadow: 0 0 70px rgba(255, 0, 255, 0.918); /* Reducimos el brillo */
+    border-radius: 5px;
+}
+
+
+/* Imágenes rotatorias con delays */
+.rotating-image:nth-child(2) { animation-delay: 3s; }
+.rotating-image:nth-child(3) { animation-delay: 6s; }
+
+
+/* Animación de fade y zoom */
+@keyframes fadeRotateZoom {
+    0% { opacity: 0; transform: scale(1); }
+    10% { opacity: 1; transform: scale(1.05); }
+    33% { opacity: 1; transform: scale(1.05); }
+    43% { opacity: 0; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+/* Efecto de pulso para la tarjeta */
+@keyframes photoCardPulse {
+    0% { box-shadow: none; }
+    50% { box-shadow: none; transform: scale(1.05); }
+    100% { box-shadow: none; transform: scale(1); }
+}
+
+
+/* Sección interactiva */
+#interactive-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#flower-card {
+    background: rgba(28, 13, 48, 0.9);
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 0 0 40px rgba(145, 0, 180, 0.6), 0 0 70px rgba(224, 157, 247, 0.9);
+}
+
+@keyframes dance {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-10px, 5px) rotate(-5deg);
+    }
+    50% {
+        transform: translate(10px, -5px) rotate(5deg);
+    }
+    75% {
+        transform: translate(-10px, -5px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+#flower-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(224, 157, 247, 0.8), 0 0 30px rgba(145, 0, 180, 1);
+    animation: dance 2s infinite ease-in-out;
+}
+
+#magic-button {
+    background: radial-gradient(circle at center, #ff85dc, #9400ff, #ff69b4); /* Degradado inicial radial */
+    border: 2px solid rgba(255, 157, 247, 0.8); /* Borde brillante */
+    border-radius: 50px;
+    color: white;
+    font-size: 18px;
+    padding: 15px 35px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif; /* Fuente elegante */
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(255, 157, 247, 0.6), 0 0 60px rgba(145, 0, 180, 0.9), 0 0 80px rgba(255, 105, 180, 1); /* Brillo */
+    position: relative;
+    overflow: hidden;
+    background-size: 200% 200%; /* Aumentamos el tamaño para darle más espacio de movimiento al degradado */
+    animation: buttonFocusedBackgroundAnimation 3s ease-in-out infinite, glowEffect 3s ease-in-out infinite alternate; /* Animación fluida del degradado + brillo pulsante */
+    transition: transform 0.3s ease-in-out; /* Suavizar el zoom */
+}
+
+/* Animación del degradado fluido */
+@keyframes buttonFocusedBackgroundAnimation {
+    0% { background-position: 50% 50%; }
+    25% { background-position: 30% 30%; }
+    50% { background-position: 70% 70%; }
+    75% { background-position: 50% 50%; }
+    100% { background-position: 50% 50%; }
+}
+
+/* Brillo pulsante del borde */
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 40px rgba(255, 157, 247, 0.6), 0 0 60px rgba(145, 0, 180, 0.9), 0 0 80px rgba(255, 105, 180, 1);
+    }
+    100% {
+        box-shadow: 0 0 60px rgba(255, 105, 180, 1), 0 0 80px rgba(145, 0, 180, 1), 0 0 100px rgba(255, 157, 247, 1);
+    }
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ff85dc, #9400ff, #ff69b4); /* Fondo mejorado */
+    border-radius: 25px;
+    padding: 40px;
+    width: 90%;
+    max-width: 650px; /* Tamaño un poco más amplio */
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.6), 0 0 50px rgba(145, 0, 255, 0.9);
+    overflow: hidden;
+}
+
+/* Contenedor de fotos rotatorias para el modal */
+#photo-card-modal {
+    width: 380px;
+    height: 380px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Marco elegante para el modal */
+.photo-frame-modal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Mantener el marco debajo de las imágenes */
+}
+
+/* Imagen del marco decorativo en el modal */
+.frame-image-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Imagen de la persona ajustada dentro del marco en el modal */
+.rotating-image-modal {
+    position: absolute;
+    top: 28%;
+    left: 28%;
+    width: 44%;
+    height: 46%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 3;
+    animation: fadeRotateZoomModal 10s infinite ease-in-out;
+    transition: transform 1s ease, opacity 0.5s ease;
+    box-shadow: 0 0 70px rgba(255, 0, 255, 0.918);
+    border-radius: 5px;
+}
+
+/* Imagen rotatoria sin delay (primera imagen) */
+.rotating-image-modal:nth-child(2) {
+    animation-delay: 0s; /* Aparece inmediatamente */
+}
+
+
+/* Imágenes rotatorias en el modal con delays ajustados */
+.rotating-image-modal:nth-child(3) { animation-delay: 4s; }
+.rotating-image-modal:nth-child(4) { animation-delay: 6s; }
+.rotating-image-modal:nth-child(5) { animation-delay: 8s; }
+.rotating-image-modal:nth-child(6) { animation-delay: 10s; }
+
+/* Animación de fade y zoom en el modal */
+@keyframes fadeRotateZoomModal {
+    0% { opacity: 0; transform: scale(1); }
+    10% { opacity: 1; transform: scale(1.05); }
+    33% { opacity: 1; transform: scale(1.05); }
+    43% { opacity: 0; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+
+/* Contenedor de los textos */
+#rotating-text-container {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(135deg, #ff69b4, #8b00ff);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: pulseEffect 2s infinite;
+}
+
+/* Estilo mejorado para los textos */
+/* Estilo mejorado para los textos */
+.rotating-frase {
+    font-size: 1.2rem;  /* Tamaño de fuente mayor */
+    font-weight: 900;
+    margin: 10px 0;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeInOutAndGrow 16s ease-in-out infinite;  /* Nueva animación */
+    
+    background: linear-gradient(45deg, #ffe57f, #ff4081);
+    background-clip: text;  /* Versión estándar para compatibilidad */
+    -webkit-background-clip: text;  /* Para navegadores WebKit (Chrome, Safari) */
+    
+    color: transparent;
+    -webkit-text-fill-color: transparent; /* Solo para WebKit */
+
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Sombra en las letras */
+    letter-spacing: 1px;  /* Espaciado entre letras */
+}
+
+/* Animación para rotar los textos */
+.rotating-frase:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.rotating-frase:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.rotating-frase:nth-child(3) {
+    animation-delay: 8s;
+}
+
+.rotating-frase:nth-child(4) {
+    animation-delay: 12s;
+}
+
+/* Nueva animación de desvanecimiento con crecimiento */
+@keyframes fadeInOutAndGrow {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.8);  /* Texto más pequeño al principio y al final */
+    }
+    25%, 75% {
+        opacity: 1;
+        transform: scale(1.2);  /* Texto más grande mientras está visible */
+    }
+}
+
+/* Animación de pulso para el contenedor */
+@keyframes pulseEffect {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 105, 180, 1);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+}
+
+
+/* Cerrar el modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, #ff66cc, #ff1493); /* Degradado rosado vibrante */
+    border-radius: 50%;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.9), 0 0 40px rgba(255, 0, 255, 1);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    text-align: center;
+    line-height: 0.7;
+    animation: rotateButton 4s infinite linear; /* Animación de rotación suave */
+}
+
+/* Animación de rotación */
+@keyframes rotateButton {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilos para el footer */
+footer {
+    background: linear-gradient(135deg, #6a00b6, #ff69b4);  /* Degradado suave */
+    padding: 10px 20px;  /* Espaciado más compacto */
+    text-align: center;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);  /* Sombra más suave */
+    width: 100%;
+    position: sticky;
+    bottom: 0;  /* Mantiene el footer pegado al fondo */
+    margin-top: auto; /* Asegura que el footer quede al final del contenido */
+}
+
+/* Estilos para el texto dentro del footer */
+.footer-text {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;  /* Tamaño de texto más pequeño y compacto */
+    margin: 0;
+    letter-spacing: 0.5px;  /* Espaciado más ajustado entre letras */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);  /* Sombra ligera para el texto */
+}

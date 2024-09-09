@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Noemi!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Pantalla de bienvenida -->
+    <div id="welcome-screen">
+        <div id="card-container">
+            <div id="main-card-content">
+                <img src="img/welcome.png" alt="Tarta de Cumpleaños" id="birthday-cake-image">
+                <h1 class="card-title">¡Feliz Cumpleaños, Noemi!</h1>
+                <p class="card-message">Te deseo todo lo mejor, hoy y siempre en este día tan especial. 🎂🎉</p>
+                <button id="welcome-button">¡Magui, Pulsa aquí!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="background-container">
+        <header id="header">
+            <div class="title-container">
+                <h1>¡Feliz Cumpleaños, Noemi!</h1>
+            </div>
+        </header>        
+
+        <!-- Sección de fotos de Magui -->
+        <section id="photo-rotation-section">
+            <div id="photo-card">
+                <div class="photo-frame">
+                    <img src="img/marco.png" alt="Elegant Frame" class="frame-image"z> <!-- Marco PNG -->
+                    <img src="img/magui5.png" alt="Magui" class="rotating-image"> <!-- Imagen rotatoria de la persona -->
+                    <img src="img/magui.png" alt="Magui" class="rotating-image">
+                    <img src="img/magui2.png" alt="Magui" class="rotating-image">
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Sección interactiva (Flor y Botón) -->
+        <section id="interactive-section">
+            <div id="flower-card">
+                <img src="img/flor2.png" alt="Flor" id="flower-image">
+            </div>
+            <button id="magic-button">
+                <i class="fas fa-magic"> ¡Magui, presiona aquí!</i>
+            </button>
+        </section>
+
+<!-- Modal para las imágenes y frases -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span> <!-- Botón de cerrar -->
+        <!-- Contenedor para imágenes rotatorias en el modal -->
+        <div id="photo-card-modal">
+            <div class="photo-frame-modal">
+                <img src="img/marco.png" alt="Elegant Frame" class="frame-image-modal"> <!-- Marco PNG -->
+                <!-- Imágenes rotatorias -->
+                <img src="img/magui6.png" alt="Magui" class="rotating-image-modal rotating-image">
+                <img src="img/magui4.png" alt="Magui" class="rotating-image-modal rotating-image">
+                <img src="img/magui3.png" alt="Magui" class="rotating-image-modal rotating-image">
+                <img src="img/magui7.png" alt="Magui" class="rotating-image-modal rotating-image">
+                <img src="img/magui5.png" alt="Magui" class="rotating-image-modal rotating-image">
+            </div>
+        </div>
+        <!-- Contenedor para frases rotativas -->
+        <div id="rotating-text-container">
+            <p class="rotating-frase">¡Feliz dia Magui, recuerda que...!</p>
+            <p class="rotating-frase">¡Eres una gran chica! una en mil millones💫</p>
+            <p class="rotating-frase">¡Puedes lograr todo lo que te propongas!</p>
+            <p class="rotating-frase">¡Con mucho cariño... yo, feliz cumpleaños🎂</p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer>
+    <p>Felicidades en este gran dia, te deseo mucha felicidad🎂🎂🎂</p>
+</footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <audio id="background-music">
+        <source src="musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="scripts.js"></script>
+
+</body>
+</html>
